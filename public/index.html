@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Compañías</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="assets/css/main.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header id="header">
+      <div class="logo">
+        <a href="index.html">Compañías <span>Miguel Moreno</span></a>
+      </div>
+      <a href="#menu"><span>Menu</span></a>
+    </header>
+
+    <!-- Nav -->
+    <nav id="menu">
+      <ul class="links">
+        <li><a href="/">Compañías</a></li>
+      </ul>
+    </nav>
+
+    <!-- Banner -->
+    <section id="banner" class="bg-img" data-bg="banner.jpg">
+      <div class="inner">
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <div class="card">
+                <div class="card-header" style="color: black">
+                  <div class="row">
+                    <div class="col text-start">Companías</div>
+                    <div class="col text-end">
+                      <button
+                        id="modalbtn"
+                        data-bs-toggle="modal"
+                        data-bs-target="#regiter"
+                        class="btn btn-sm btn-success"
+                      >
+                        Registrar
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <table class="table table-sm">
+                    <thead>
+                      <th class="text-dark">#</th>
+                      <th class="text-dark">Nombre</th>
+                      <th class="text-dark">Acciones</th>
+                    </thead>
+                    <tbody id="companies"></tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div
+      class="modal"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      id="regiter"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" style="color: black">Registrar Companía</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group mb-3">
+              <label for="nombre" class="fw-bold text-dark">Nombre</label>
+              <input
+                type="text"
+                name="nombre"
+                id="nombre"
+                class="form-control"
+                placeholder="Nombre"
+                required
+              />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cerrar
+            </button>
+            <button type="button" onclick="register()" class="btn btn-primary">
+              Guardar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="modal"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      id="editing"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" style="color: black">Modificar Companía</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group mb-3">
+              <label for="nombre" class="fw-bold text-dark">Nombre</label>
+              <input
+                type="text"
+                name="nombreUP"
+                id="nombreUP"
+                class="form-control"
+                placeholder="Nombre"
+                required
+              />
+              <input type="hidden" id="idUP" />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+              id="cerrarModalUp"
+            >
+              Cerrar
+            </button>
+            <button type="button" onclick="update()" class="btn btn-primary">
+              Actualizar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="footer">
+      <div class="inner">
+        <ul class="icons">
+          <li>
+            <a href="#" class="icon round fa-twitter"
+              ><span class="label">Twitter</span></a
+            >
+          </li>
+          <li>
+            <a href="#" class="icon round fa-facebook"
+              ><span class="label">Facebook</span></a
+            >
+          </li>
+          <li>
+            <a href="#" class="icon round fa-instagram"
+              ><span class="label">Instagram</span></a
+            >
+          </li>
+        </ul>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/skel.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="assets/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.9/dist/sweetalert2.all.min.js"></script>
+
+    <script>
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener("mouseenter", Swal.stopTimer);
+          toast.addEventListener("mouseleave", Swal.resumeTimer);
+        },
+      });
+      const url = "http://localhost:8080/api/company";
+      const getCompanies = async () => {
+        try {
+          const response = await fetch(`${url}/`, { method: "GET" });
+          const data = await response.json();
+          let companies = ``;
+          document.getElementById("companies").innerHTML = "";
+          data.data?.map((item, i) => {
+            companies += `
+              <tr>
+                <td>${i + 1}</td>
+                <td>${item.name}</td>
+                <td>
+                  <button  data-id="${item.id}" data-name="${item.name}"
+                  class="btn btn-warning btn-sm btn-update"
+                  onclick="editar(this)"
+                  data-bs-toggle="modal"
+                  data-bs-target="#editing">Modificar</button>
+                  <button data-id="${item.id}" data-name="${item.name}"
+                  class="btn btn-danger btn-sm btn-delete"
+                  onclick="eliminar(this)">Eliminar</button>
+                </td>
+              </tr>
+            `;
+          });
+          document.getElementById("companies").innerHTML = companies;
+        } catch (error) {}
+      };
+
+      function editar(btn) {
+        document.getElementById("nombreUP").value = btn.dataset.name;
+        document.getElementById("idUP").value = btn.dataset.id;
+      }
+
+      async function eliminar(btn) {
+        const response = await fetch(`${url}/`, {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ id: btn.dataset.id }),
+        });
+        const data = await response.json();
+        if (data.error) {
+          Toast.fire({
+            icon: "danger",
+            title: "Ocurrió un error",
+          });
+        } else {
+          Toast.fire({
+            icon: "success",
+            title: data.msg,
+          });
+          getCompanies();
+        }
+      }
+
+      const register = async () => {
+        let nombre = document.getElementById("nombre").value;
+        if (!nombre) {
+          Toast.fire({
+            icon: "info",
+            title: "Ingrese los campos",
+          });
+        }
+        const response = await fetch(`${url}/`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ nombre: nombre }),
+        });
+        const data = await response.json();
+        if (data.error) {
+          Toast.fire({
+            icon: "danger",
+            title: "Ocurrió un error",
+          });
+        } else {
+          Toast.fire({
+            icon: "success",
+            title: data.msg,
+          });
+          getCompanies();
+          document.getElementById("nombre").value = null;
+          document.getElementById("modalbtn").click();
+        }
+      };
+
+      const update = async () => {
+        let nombre = document.getElementById("nombreUP").value;
+        let id = document.getElementById("idUP").value;
+        let company = {
+          nombre: nombre,
+          id: parseInt(id),
+        };
+        if (!nombre) {
+          Toast.fire({
+            icon: "info",
+            title: "Ingrese los campos",
+          });
+        }
+        const response = await fetch(`${url}/`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(company),
+        });
+        const data = await response.json();
+        if (data.error) {
+          Toast.fire({
+            icon: "danger",
+            title: "Ocurrió un error",
+          });
+        } else {
+          Toast.fire({
+            icon: "success",
+            title: data.msg,
+          });
+          getCompanies();
+          document.getElementById("nombreUP").value = null;
+          document.getElementById("idUP").value = null;
+          document.getElementById("cerrarModalUp").click();
+        }
+      };
+
+      document.body.onload = () => {
+        getCompanies();
+      };
+    </script>
+  </body>
+</html>
